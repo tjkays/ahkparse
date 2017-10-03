@@ -15,8 +15,6 @@ def parseahk(filename):
         else:
             print("invalid")
 
-    keyboard.wait()
-
 def createhotkey(key, text):
     """creates hotkey from key and text"""
 
