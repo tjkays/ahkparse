@@ -18,8 +18,9 @@ def parseahk(filename):
 def createhotkey(key, text):
     """creates hotkey from key and text"""
 
-    print(key, " - ", text.rstrip('\n'))
-    keyboard.add_abbreviation(key, text.rstrip('\n'))
+    text = text.rstrip('\n')
+    print(key, " - ", text)
+    keyboard.add_abbreviation(key, text)
 
 USERFILE = input("Which file?")
 parseahk(USERFILE)
