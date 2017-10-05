@@ -1,7 +1,4 @@
-"""Helper methods to wrap calls to the xdotool binary.
-
-Eventually, this should wrap all available commands:
-"""
+"""An example implementation of CommandWrapper for xdotool and ls"""
 from command_wrapper import CommandWrapper
 xdotool = CommandWrapper.create('xdotool')
 ls = CommandWrapper.create('ls')

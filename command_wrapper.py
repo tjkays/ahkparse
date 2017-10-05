@@ -1,6 +1,13 @@
-"""Helper methods to wrap calls to the xdotool binary.
+"""Assists in executing commands via subprocess.
 
-Eventually, this should wrap all available commands:
+Example usage:
+  xdotool = CommandWrapper.create('xdotool')
+  ls = CommandWrapper.create('ls')
+
+  xdotool.sleep(2)
+  xdotool.type('slept for 2')
+  ls.call(flags={'-la': None, '--block-size': 'M'})
+
 """
 import subprocess
 
