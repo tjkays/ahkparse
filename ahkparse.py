@@ -1,6 +1,8 @@
 """module takes ahk file and parses into hotkeys"""
 
 import keyboard
+from command_wrapper import CommandWrapper
+XDOTOOL = CommandWrapper.create('xdotool')
 
 def parseahk(filename):
     """parseahk(filename) -> list"""
@@ -18,12 +20,11 @@ def parseahk(filename):
 def createhotkey(key, text):
     """creates hotkey from key and text"""
 
-    text = text.replace('\n', '')
-    print(text)
-    keyboard.add_abbreviation(key, text)
-    return
+    replacement = '\b' * (len(key)+1) + text.rstrip()
+    callback = lambda: XDOTOOL.type(replacement)
+    return keyboard.add_word_listener(key, callback, match_suffix=False, timeout=.5)
 
 USERFILE = input("Which file?")
-keyboard.hook(print)
+#keyboard.hook(print)
 parseahk(USERFILE)
 keyboard.wait()
